@@ -10,12 +10,12 @@
 	<div class="col-lg-12">
 		<div class="panel panel-info">
 			<div class="panel-heading">
-				admin data
+				policia data
 			</div>
 			<div class="panel-body">
 				<div class="row">
 					<div class="col-lg-6">
-						<form role="form" method="post" action="/admins" autocomplete="off">
+						<form role="form" method="post" action="/policias" autocomplete="off">
 							@foreach($errors->all() as $error)
 								<div class="alert alert-danger">
 									<button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
@@ -24,44 +24,36 @@
 							@endforeach
 							<div class="form-group ">
 								<label>ID</label>
-								<input type="text" class="form-control" disabled="" value="{!! $admin->id !!}">		
+								<input type="text" class="form-control" disabled="" value="{!! $policia->id !!}">		
 							</div>
 							<div class="form-group ">
-								<label>Names</label>
-								<input type="text" class="form-control" disabled="" value="{!! $admin->names !!}" style="text-transform:uppercase;"
+								<label>NOMBRES</label>
+								<input type="text" class="form-control" disabled="" value="{!! $policia->nombres !!}" style="text-transform:uppercase;"
 								onkeyup="javascript:this.value=this.value.toUpperCase();">		
 							</div>
 							<div class="form-group ">
-								<label>Lastname</label>
-								<input type="text" class="form-control" disabled="" value="{!! $admin->lastname !!}" style="text-transform:uppercase;"
-								onkeyup="javascript:this.value=this.value.toUpperCase();">
+								<label>SUELDO</label>
+								<input type="text" class="form-control" disabled="" value="{!! $policia->sueldo !!}">
 							</div>
 							<div class="form-group ">
-								<label>Position</label><br>
-								@if ($admin->position == 'DIRECTOR') 
-									<input type="text" class="form-control" disabled=""	value="DIRECTOR" style="text-transform:uppercase;">
-								@endif
-								@if ($admin->position == 'COORDINADOR') 
-									<input type="text" class="form-control" disabled=""	value="COORDINADOR" style="text-transform:uppercase;">
-								@endif
-								@if ($admin->position == 'SECRETARIA') 
-									<input type="text" class="form-control" disabled=""	value="SECRETARIA" style="text-transform:uppercase;">
-								@endif
-							</div>
+                                <label>SEXO</label><br>
+                                    <input type="radio" disabled="" name="sex" @if($policia->sex == "M") selected="" @endif value="M" checked>M &nbsp; &nbsp;
+                                    <input type="radio"  disabled="" name="sex" @if($policia->sex == "F") selected="" @endif value="F" checked>F<br>
+                                </select>
+                            </div>
 							<div class="form-group ">
-								<label>Email</label>
-								<input type="text" class="form-control" disabled="" value="{!! $admin->email !!}" style="text-transform:uppercase;"
-								onkeyup="javascript:this.value=this.value.toUpperCase();">	
-							</div>
-							<div class="form-group ">
-								<label>Phone</label>
-								<input type="text" class="form-control" disabled="" value="{!! $admin->phone !!}">
-							</div>
-							<div class="form-group ">
-								<label>DNI</label>
-								<input type="text" class="form-control" disabled="" value="{!! $admin->dni !!}">
-							</div>
-							<button type="button" class="btn btn-block btn-danger" onclick="location.href='/admins'">Back</button>
+                                <label>RANGO</label>
+                                <select name="rango" class="form-control">
+                                    <option value="OFICIAL"  disabled="" @if($policia->position == "OFICIAL") selected="" @endif>OFICIAL</option>
+                                    <option value="SUB-OFICIAL" disabled="" @if($policia->position == "SUB-OFICIAL") selected="" @endif>SUB-OFICIAL</option>
+                                    <option value="OFICIAL-PRIMERA" @if($policia->position == "OFICIAL-PRIMERA") selected="" @endif>OFICIAL-PRIMERA</option>
+                                    <option value="OFICIAL-SEGUNDA" disabled="" @if($policia->position == "OFICIAL-SEGUNDA") selected="" @endif>OFICIAL-SEGUNDA</option>
+                                </select>
+                            <div class="form-group ">
+                                <label>BAJA</label><br>
+                                <input type="checkbox" disabled="" name="baja" @if($policia->baja == "1") checked @endif value = "1"> &nbsp; check si activo
+                            </div>
+							<button type="button" class="btn btn-block btn-danger" onclick="location.href='/policias'">Back</button>
 						</form>
 					</div>
 @stop
